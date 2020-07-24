@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 //import { robots } from './robots';
-import Scroll from '../components/Scroll'
+import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 
 /*
@@ -57,8 +58,12 @@ class App extends Component {
                     <SearchBox searchChange={this.onSearchChange} />
 
                     {/* We can see Scroll is not a self closing component, it actuall wraps some other component. We need to tell Scroll that render whatever present inside of you. Here children concept comes in. Scroll has children to render. We can get the children inside props. */}
+
+                    {/* Later we added ErrorBoundary componenet to show if there is some error in rendering the cards, we should show our users some other messages.  */}
                     <Scroll>
-                        <CardList robots={filterRobots} />
+                        <ErrorBoundary>
+                            <CardList robots={filterRobots} />
+                        </ErrorBoundary>
                     </Scroll>
                 </div>
             );
