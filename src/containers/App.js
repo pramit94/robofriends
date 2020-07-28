@@ -31,6 +31,9 @@ class App extends Component {
     }
 
     componentDidMount() {
+        /*
+            Here we are using AJAX concept. We used AJAX with fetch API to get the reponse from the url mentioned in fetch and at that time the page will not get refreshed, only the part where we get users from the url, will be loaded. Now after fetching, we need to convert the response to JSON object and again to get the data we need to use 'then' again. Goto 'Promises' project to see the use of then. 
+        */
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => this.setState({ robots: users }))
